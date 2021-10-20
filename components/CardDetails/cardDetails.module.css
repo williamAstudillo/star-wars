@@ -1,0 +1,17 @@
+.card_container h2 {
+  color: #fff;
+  font-size: 15px;
+}
+.card_container p {
+  color: rgba(255, 255, 255, 0.596);
+  font-size: 12px;
+  display: inline-block;
+}
+.card_container button {
+  border: 0px;
+  background-color: transparent;
+  color: #747171;
+}
+.details {
+  text-align: start;
+}
