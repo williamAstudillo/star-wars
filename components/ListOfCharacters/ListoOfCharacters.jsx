@@ -5,24 +5,28 @@ import Appcontext from "context/AppContext";
 
 const ListoOfCharacters = () => {
   const { state, deleteCharacter } = useContext(Appcontext);
-  const { results: characters } = state;
+  const { characters, currentUrl } = state;
   return (
     <div className={styles.list}>
-      {
-        // eslint-disable-next-line camelcase
-        characters.map(({ name, gender, birth_year }) => (
+      {characters.map(
+        (
+          { name, gender, birth_year: birthYear, isFavorite = false },
+          index
+        ) => (
           <CardDetails
             key={name}
             name={name}
             gender={gender}
-            // eslint-disable-next-line camelcase
-            birthYear={birth_year}
+            birthYear={birthYear}
             deleteCharacter={deleteCharacter}
+            isFavorite={isFavorite}
+            index={index}
+            url={currentUrl}
           >
             {name}
           </CardDetails>
-        ))
-      }
+        )
+      )}
     </div>
   );
 };

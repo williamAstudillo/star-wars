@@ -8,13 +8,15 @@ const Card = ({
   birthYear,
   isFavorite = false,
   deleteCharacter,
+  index,
+  url,
 }) => {
   return (
     <div className={styles.container}>
-      <button type="button" onClick={() => deleteCharacter(name)}>
+      <button type="button" onClick={() => deleteCharacter(name, url)}>
         x
       </button>
-      <Link href={`/character/${name}`}>
+      <Link href={`/character/${index}`}>
         <div className={styles.details}>
           <div>
             <h2>{name}</h2>

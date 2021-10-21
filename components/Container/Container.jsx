@@ -4,11 +4,15 @@ import ListoOfCharacters from "components/ListOfCharacters/ListoOfCharacters";
 import Appcontext from "context/AppContext";
 
 const ContainerCharacters = () => {
-  const { state, pagination } = useContext(Appcontext);
+  const { state, pagination, showFavorite } = useContext(Appcontext);
   const { next, previous } = state;
   return (
     <div className={styles.container}>
-      <button className={styles.buttonFavorite} type="button">
+      <button
+        className={styles.buttonFavorite}
+        type="button"
+        onClick={showFavorite}
+      >
         Filtrar por favoritos
       </button>
       <ListoOfCharacters />
