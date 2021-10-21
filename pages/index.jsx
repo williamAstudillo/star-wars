@@ -1,12 +1,12 @@
 import React from "react";
 import Navbar from "components/Navbar/Navbar";
-import ContainerCharacters from "components/ContainerCharacters/ContainerCharacters";
+import Container from "components/Container/Container";
 
 const index = () => {
   return (
     <>
       <Navbar />
-      <ContainerCharacters />
+      <Container />
     </>
   );
 };

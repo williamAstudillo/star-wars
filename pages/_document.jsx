@@ -5,7 +5,12 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head />
+        <Head>
+          <script
+            src="https://kit.fontawesome.com/ac42a7e932.js"
+            crossOrigin="anonymous"
+          />
+        </Head>
         <body className="my-body-class">
           <Main />
           <NextScript />

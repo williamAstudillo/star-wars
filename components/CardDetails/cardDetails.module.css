@@ -1,17 +1,40 @@
-.card_container h2 {
-  color: #fff;
-  font-size: 15px;
+.container {
+  width: 20rem;
+  margin: 0.7rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: start;
 }
-.card_container p {
+.container h2 {
+  color: #fff;
+  font-size: 1.5rem;
+}
+.container p {
   color: rgba(255, 255, 255, 0.596);
-  font-size: 12px;
+  font-size: 1.2rem;
   display: inline-block;
 }
-.card_container button {
-  border: 0px;
+.container button {
+  border: 0rem;
   background-color: transparent;
   color: #747171;
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
 }
 .details {
   text-align: start;
+  display: inline-block;
+  width: 85%;
+}
+.details i {
+  color: goldenrod;
+}
+.details h2 {
+  display: inline-block;
+}
+.details div:nth-child(1) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

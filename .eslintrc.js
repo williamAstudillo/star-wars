@@ -21,7 +21,7 @@ module.exports = {
   rules: {
     "arrow-body-style": 0,
     "react/jsx-props-no-spreading": "off",
-    "no-unused-vars": "off",
+    // "no-unused-vars": "off",
     "import/no-unresolved": "off",
     "react/prop-types":"off"
   },

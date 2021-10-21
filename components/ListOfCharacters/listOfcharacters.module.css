@@ -1,0 +1,12 @@
+.list {
+  width: 40%;
+  height: 30rem;
+  margin: 0 auto;
+  display: grid;
+  margin-top: 3rem;
+}
+@media (min-width: 800px) {
+  .list {
+    grid-template-columns: repeat(2, auto);
+  }
+}
