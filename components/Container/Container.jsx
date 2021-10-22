@@ -3,20 +3,21 @@ import styles from "components/Container/container.module.css";
 import ListoOfCharacters from "components/ListOfCharacters/ListoOfCharacters";
 import Appcontext from "context/AppContext";
 
-const ContainerCharacters = () => {
+const Container = () => {
   const { state, pagination, showFavorite } = useContext(Appcontext);
-  const { next, previous } = state;
+  const { next, previous, currentUrl, isFavoriteShow } = state;
+
   return (
     <div className={styles.container}>
       <button
         className={styles.buttonFavorite}
         type="button"
-        onClick={showFavorite}
+        onClick={() => showFavorite(currentUrl)}
       >
         Filtrar por favoritos
       </button>
       <ListoOfCharacters />
-      {previous && (
+      {previous && !isFavoriteShow && (
         <button
           type="button"
           className={styles.navigationButton}
@@ -26,7 +27,7 @@ const ContainerCharacters = () => {
           Anterior
         </button>
       )}
-      {next && (
+      {next && !isFavoriteShow && (
         <button
           type="button"
           className={styles.navigationButton}
@@ -40,4 +41,4 @@ const ContainerCharacters = () => {
   );
 };
 
-export default ContainerCharacters;
+export default Container;

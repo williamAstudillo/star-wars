@@ -1,24 +1,6 @@
 import { useState,useEffect } from 'react';
 import axios from 'axios';
-
-const getLocalStorageData=(key)=>{
-   try{
-    const localStorageData = JSON.parse(localStorage.getItem(key))
-    return localStorageData
-   }catch(e){
-     return false
-   }
- }
- const setLocalStorageData=(key,url,data)=>{
-   try{
-    const localStorageData = JSON.parse(localStorage.getItem(key))
-    localStorage.setItem("charactersData", JSON.stringify({...localStorageData,[url]:data}));
-   }catch(e){
-     // eslint-disable-next-line no-console
-     console.error(e)
-   }
- }
-
+import {getLocalStorageData,setLocalStorageData} from 'utils/localStorage'
 
 const useInitialState = () => {
   
@@ -30,7 +12,7 @@ const useInitialState = () => {
     currentUrl:''
   });
   
-  const URL = "https://swapi.dev/api/people";
+  const URL = "https://swapi.dev/api/people/?page=1";
  
   useEffect(() => { 
     const localStorageData = getLocalStorageData("charactersData")
@@ -86,38 +68,57 @@ const useInitialState = () => {
     }
   };
 
-  const deleteCharacter =(payload,url)=>{
-    const {characters} =state
-    const newCharacterList =characters.filter(character=>character.name !== payload)
+  const deleteCharacter =(name, url)=>{
     const localStorageData =getLocalStorageData("charactersData");
-    localStorageData.results = newCharacterList
-    setState({
-      ...state,
-      characters:newCharacterList,
-    });
-    setLocalStorageData("charactersData",url,localStorageData)
+    const newCharacterList =localStorageData[url].results.filter(character=>character.name !== name) 
+    localStorageData[url].results = newCharacterList
+    if(state.isFavoriteShow){
+      const characterListFilter =newCharacterList.filter(character=>character.isFavorite === true)
+      setState({
+        ...state,
+        characters:characterListFilter,
+      });
+    }else{
+      setState({
+        ...state,
+        characters:newCharacterList,
+      });
+    }
+    setLocalStorageData("charactersData",url,localStorageData[url])
   }
 
-  const addOrRemoveFavorite=(payload)=>{
+  const addOrRemoveFavorite=(index,url)=>{
     const {characters} =state
-    characters[payload].isFavorite=!characters[payload].isFavorite
+    characters[index].isFavorite=!characters[index].isFavorite
+    const localStorageData =getLocalStorageData("charactersData");
+    localStorageData[url].results = characters
     setState({
       ...state,
       characters,
     });
+    setLocalStorageData("charactersData",url,localStorageData[url])
   }
-  const showFavorite=()=> {
-    const {characters, isFavoriteShow} =state
+
+  const showFavorite=(url)=> {
+    const localStorageData =getLocalStorageData("charactersData");
+    const {isFavoriteShow} =state
     let newCharacterList=null
+
     if(!isFavoriteShow){
-      newCharacterList =characters.filter(character=>character.isFavorite === true)
+      newCharacterList =localStorageData[url].results.filter(character=>character.isFavorite === true)
+      setState({
+        ...state,
+        isFavoriteShow:true,
+        characters:newCharacterList,
+      })
     }else{
-      newCharacterList =characters.filter(character=>character.isFavorite === false)
+      newCharacterList =localStorageData[url].results
+      setState({
+        ...state,
+        isFavoriteShow:false,
+        characters:newCharacterList,
+      })
     }
-    setState({
-      ...state,
-      characters:newCharacterList,
-    });
   }
 
   return {

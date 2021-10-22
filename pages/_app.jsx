@@ -1,8 +1,8 @@
 import React from "react";
-import "style.css";
 import AppContext from "context/AppContext";
 import useInitialState from "hooks/useInitialState";
 import Navbar from "components/Navbar/Navbar";
+import "style.css";
 
 const MyApp = ({ Component, pageProps }) => {
   const initialState = useInitialState();

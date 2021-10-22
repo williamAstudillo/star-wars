@@ -2,18 +2,17 @@ import React from "react";
 import styles from "components/CardDetails/cardDetails.module.css";
 import Link from "next/Link";
 
-const Card = ({
-  name,
-  gender,
-  birthYear,
-  isFavorite = false,
-  deleteCharacter,
-  index,
-  url,
-}) => {
+const CardDetails = ({ character, index, setShowModal, setName }) => {
+  const { name, gender, isFavorite, birth_year: birthYear } = character;
+
+  const handleClickDelete = () => {
+    setShowModal(true);
+    setName(character.name);
+  };
+
   return (
     <div className={styles.container}>
-      <button type="button" onClick={() => deleteCharacter(name, url)}>
+      <button type="button" onClick={handleClickDelete}>
         x
       </button>
       <Link href={`/character/${index}`}>
@@ -32,4 +31,4 @@ const Card = ({
   );
 };
 
-export default Card;
+export default CardDetails;
