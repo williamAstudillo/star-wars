@@ -1,7 +1,12 @@
 .container {
   text-align: start;
-  width: 60%;
+  width: 68%;
+  min-width: 22rem;
+  max-width: 28rem;
   margin: 8rem auto;
+}
+.container div:nth-child(1) {
+  margin-bottom: 1.4rem;
 }
 .container i {
   background-color: transparent;
@@ -9,29 +14,19 @@
 }
 .container h2 {
   display: inline-block;
-  font-size: 1.9rem;
+  font-size: 2rem;
 }
 .container div:nth-child(1) {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.container p:nth-child(6) {
-  display: inline-block;
-}
-.container p:nth-child(5) {
-  display: inline-block;
-  margin-right: 1rem;
-}
-.container div:nth-child(7) {
-  text-align: center;
-}
 .icon_button {
   background-color: transparent;
   border: 0;
   display: inline-block;
 }
-.edit_button {
+.container_edit_button button {
   height: 3.5rem;
   width: 20rem;
   border-radius: 10rem;
@@ -39,4 +34,27 @@
   background: transparent;
   color: #fff;
   margin: 5rem 0;
+}
+.container_edit_button {
+  text-align: center;
+}
+.container_text_details p {
+  margin: 0;
+  font-size: 1.6rem;
+}
+.container_text_details p:nth-child(4) {
+  display: inline-block;
+  margin-right: 0.7rem;
+}
+.container_text_details p:nth-child(5) {
+  display: inline-block;
+}
+
+@media (min-width: 800px) {
+  .container {
+    width: 30%;
+  }
+  .container h2 {
+    font-size: 2.4rem;
+  }
 }

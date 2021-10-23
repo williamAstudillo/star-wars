@@ -4,6 +4,7 @@
 }
 .link_backward {
   text-align: center;
+  margin-top: 1rem;
 }
 .link_backward i {
   display: inline-block;
@@ -11,4 +12,16 @@
 .link_backward p {
   display: inline-block;
   margin: 0 1rem;
+}
+.link_backward button {
+  background-color: transparent;
+  color: #fff;
+  border: 0;
+}
+@media (min-width: 800px) {
+  .link_backward {
+    text-align: start;
+    margin-top: 1rem;
+    margin-left: 2rem;
+  }
 }

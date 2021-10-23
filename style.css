@@ -34,3 +34,9 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 350px;
+    margin: 1.75rem auto;
+  }
+}

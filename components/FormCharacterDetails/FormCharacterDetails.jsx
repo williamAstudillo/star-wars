@@ -59,21 +59,23 @@ const FormCharacterDetails = ({ index, showModal, setShowModal }) => {
         description={description}
       />
       <form className={styles.container} onSubmit={handleSubmit(onSubmit)}>
-        <div>
+        <div className={styles.title}>
           <input type="text" {...register("name")} />
-          <button
-            type="button"
-            className={styles.icon_button}
-            onClick={() => addOrRemoveFavorite(index, currentUrl)}
-          >
-            {isFavorite ? (
-              <i className="fas fa-star fa-2x" />
-            ) : (
-              <i className="far fa-star fa-2x" />
-            )}
-          </button>
+          <div>
+            <button
+              type="button"
+              className={styles.icon_button}
+              onClick={() => addOrRemoveFavorite(index, currentUrl)}
+            >
+              {isFavorite ? (
+                <i className="fas fa-star fa-2x" />
+              ) : (
+                <i className="far fa-star fa-2x" />
+              )}
+            </button>
+          </div>
         </div>
-        <div>
+        <div className={styles.container_text_details}>
           <div>
             <input type="text" {...register("gender")} />
           </div>
@@ -83,16 +85,14 @@ const FormCharacterDetails = ({ index, showModal, setShowModal }) => {
           <div>
             Amount of films: <input type="number" {...register("films")} />
           </div>
-          <div>
+          <div className={styles.inline_text}>
             height: <input type="text" {...register("height")} />
           </div>
-          <div>
+          <div className={styles.inline_text}>
             | Mass: <input type="text" {...register("mass")} />
           </div>
-          <div>
-            <button type="submit" className={styles.edit_button}>
-              Guardar cambios
-            </button>
+          <div className={styles.container_edit_button}>
+            <button type="submit">Guardar cambios</button>
           </div>
         </div>
       </form>

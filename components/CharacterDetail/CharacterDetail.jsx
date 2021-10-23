@@ -21,29 +21,29 @@ const CharacterDetail = ({ setShowForm, index }) => {
     <div className={styles.container}>
       <div>
         <h2>{name}</h2>
-        <button
-          type="button"
-          className={styles.icon_button}
-          onClick={() => addOrRemoveFavorite(index, currentUrl)}
-        >
-          {isFavorite ? (
-            <i className="fas fa-star fa-2x" />
-          ) : (
-            <i className="far fa-star fa-2x" />
-          )}
-        </button>
+        <div>
+          <button
+            type="button"
+            className={styles.icon_button}
+            onClick={() => addOrRemoveFavorite(index, currentUrl)}
+          >
+            {isFavorite ? (
+              <i className="fas fa-star fa-2x" />
+            ) : (
+              <i className="far fa-star fa-2x" />
+            )}
+          </button>
+        </div>
       </div>
-      <p>{gender}</p>
-      <p>Birth date: {birthYear}</p>
-      <p>Amount of films: {films.length}</p>
-      <p>height: {height}</p>
-      <p>| Mass: {mass}</p>
-      <div>
-        <button
-          type="button"
-          className={styles.edit_button}
-          onClick={() => setShowForm(true)}
-        >
+      <div className={styles.container_text_details}>
+        <p>{gender}</p>
+        <p>Birth date: {birthYear}</p>
+        <p>Amount of films: {films.length}</p>
+        <p>height: {height}</p>
+        <p>| Mass: {mass}</p>
+      </div>
+      <div className={styles.container_edit_button}>
+        <button type="button" onClick={() => setShowForm(true)}>
           Editar
         </button>
       </div>
