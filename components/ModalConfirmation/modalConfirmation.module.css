@@ -21,7 +21,7 @@
 }
 .button_right {
   height: 3rem;
-  width: 10rem;
+  min-width: 10rem;
   border-radius: 10rem;
   border: 0.2rem solid rgb(27 26 26);
   background: rgb(27 26 26);

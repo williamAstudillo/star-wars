@@ -1,14 +1,11 @@
 import React, { useContext, useState } from "react";
-import Link from "next/Link";
 import Appcontext from "context/AppContext";
 import styles from "components/CharacterDetail/characterDetail.module.css";
-import FormCharacterDetails from "components/FormCharacterDetails/FormCharacterDetails";
 
-const CharacterDetail = ({ index }) => {
+const CharacterDetail = ({ setShowForm, index }) => {
   const { state, addOrRemoveFavorite } = useContext(Appcontext);
   const { characters, currentUrl } = state;
   const [character] = useState(characters[index]);
-  const [showForm, setShowForm] = useState(false);
 
   const {
     name,
@@ -21,46 +18,35 @@ const CharacterDetail = ({ index }) => {
   } = character;
 
   return (
-    <div className={styles.character_detail}>
-      <Link href="/">
-        <div className={styles.link_backward}>
-          <i className="fas fa-chevron-left" />
-          <p>Volver al listado</p>
-        </div>
-      </Link>
-      {!showForm && (
-        <div className={styles.container}>
-          <div>
-            <h2>{name}</h2>
-            <button
-              type="button"
-              className={styles.icon_button}
-              onClick={() => addOrRemoveFavorite(index, currentUrl)}
-            >
-              {isFavorite ? (
-                <i className="fas fa-star fa-2x" />
-              ) : (
-                <i className="far fa-star fa-2x" />
-              )}
-            </button>
-          </div>
-          <p>{gender}</p>
-          <p>Birth date: {birthYear}</p>
-          <p>Amount of films: {films.length}</p>
-          <p>height: {height}</p>
-          <p>| Mass: {mass}</p>
-          <div>
-            <button
-              type="button"
-              className={styles.edit_button}
-              onClick={() => setShowForm(true)}
-            >
-              Editar
-            </button>
-          </div>
-        </div>
-      )}
-      {showForm && <FormCharacterDetails index={index} />}
+    <div className={styles.container}>
+      <div>
+        <h2>{name}</h2>
+        <button
+          type="button"
+          className={styles.icon_button}
+          onClick={() => addOrRemoveFavorite(index, currentUrl)}
+        >
+          {isFavorite ? (
+            <i className="fas fa-star fa-2x" />
+          ) : (
+            <i className="far fa-star fa-2x" />
+          )}
+        </button>
+      </div>
+      <p>{gender}</p>
+      <p>Birth date: {birthYear}</p>
+      <p>Amount of films: {films.length}</p>
+      <p>height: {height}</p>
+      <p>| Mass: {mass}</p>
+      <div>
+        <button
+          type="button"
+          className={styles.edit_button}
+          onClick={() => setShowForm(true)}
+        >
+          Editar
+        </button>
+      </div>
     </div>
   );
 };

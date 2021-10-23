@@ -1,7 +1,3 @@
-.character_detail {
-  height: 100vh;
-  color: #fff;
-}
 .container {
   text-align: start;
   width: 60%;
@@ -30,7 +26,11 @@
 .container div:nth-child(7) {
   text-align: center;
 }
-
+.icon_button {
+  background-color: transparent;
+  border: 0;
+  display: inline-block;
+}
 .edit_button {
   height: 3.5rem;
   width: 20rem;
@@ -39,19 +39,4 @@
   background: transparent;
   color: #fff;
   margin: 5rem 0;
-}
-.icon_button {
-  background-color: transparent;
-  border: 0;
-  display: inline-block;
-}
-.link_backward {
-  text-align: center;
-}
-.link_backward i {
-  display: inline-block;
-}
-.link_backward p {
-  display: inline-block;
-  margin: 0 1rem;
 }

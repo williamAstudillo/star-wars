@@ -1,6 +1,7 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
 import styles from "components/ModalConfirmation/modalConfirmation.module.css";
+import Link from "next/link";
 
 const ModalConfirmation = ({
   show,
@@ -29,13 +30,22 @@ const ModalConfirmation = ({
         >
           cancelar
         </button>
-        <button
-          type="button"
-          className={styles.button_right}
-          onClick={() => handleClickDelete(name, url)}
-        >
-          borrar
-        </button>
+        {deleteCharacter && (
+          <button
+            type="button"
+            className={styles.button_right}
+            onClick={() => handleClickDelete(name, url)}
+          >
+            borrar
+          </button>
+        )}
+        {!deleteCharacter && (
+          <Link href="/">
+            <button type="button" className={styles.button_right}>
+              abandonar página
+            </button>
+          </Link>
+        )}
       </Modal.Body>
     </Modal>
   );

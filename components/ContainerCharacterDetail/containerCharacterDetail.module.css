@@ -1,0 +1,14 @@
+.character_detail {
+  height: 100vh;
+  color: #fff;
+}
+.link_backward {
+  text-align: center;
+}
+.link_backward i {
+  display: inline-block;
+}
+.link_backward p {
+  display: inline-block;
+  margin: 0 1rem;
+}

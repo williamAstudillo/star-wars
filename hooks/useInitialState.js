@@ -57,7 +57,6 @@ const useInitialState = () => {
       setLocalStorageData("charactersData",url,data)
     }else{
       const {results,next,previous} =localStorageData[url]
-
       setState({
         ...state,
         characters:results,
@@ -120,13 +119,23 @@ const useInitialState = () => {
       })
     }
   }
+  const modifyCharacter=(index,characterNewInfo)=>{
+    const localStorageData =getLocalStorageData("charactersData");
+    localStorageData[state.currentUrl].results[index]=characterNewInfo
+    setLocalStorageData("charactersData",state.currentUrl,localStorageData[state.currentUrl])
+    setState({
+      ...state,
+      characters:localStorageData[state.currentUrl].results,
+    });
+  }
 
   return {
     state,
     pagination,
     deleteCharacter,
     addOrRemoveFavorite,
-    showFavorite
+    showFavorite,
+    modifyCharacter
   };
 
 };

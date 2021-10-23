@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "components/CardDetails/cardDetails.module.css";
 import Link from "next/Link";
+import styles from "components/CardDetails/cardDetails.module.css";
 
 const CardDetails = ({ character, index, setShowModal, setName }) => {
   const { name, gender, isFavorite, birth_year: birthYear } = character;

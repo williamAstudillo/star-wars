@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import styles from "components/Container/container.module.css";
-import ListoOfCharacters from "components/ListOfCharacters/ListoOfCharacters";
 import Appcontext from "context/AppContext";
+import ListoOfCharacters from "components/ListOfCharacters/ListoOfCharacters";
+import styles from "components/Container/container.module.css";
 
 const Container = () => {
   const { state, pagination, showFavorite } = useContext(Appcontext);

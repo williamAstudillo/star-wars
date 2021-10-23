@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
-import CharacterDetail from "components/CharacterDetail/CharacterDetail";
+import ContainerCharacterDetail from "components/ContainerCharacterDetail/ContainerCharacterDetail";
 
 const CharacterInfo = () => {
   const router = useRouter();
@@ -8,7 +8,7 @@ const CharacterInfo = () => {
 
   return (
     <>
-      <CharacterDetail index={index} />
+      <ContainerCharacterDetail index={index} />
     </>
   );
 };

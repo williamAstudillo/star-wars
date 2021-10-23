@@ -13,16 +13,7 @@ const ListoOfCharacters = () => {
   const description = "Si borras, la acción no se podrá deshacer";
 
   return (
-    <div className={styles.list}>
-      {characters.map((character, index) => (
-        <CardDetails
-          key={character.name}
-          character={character}
-          setShowModal={setShowModal}
-          index={index}
-          setName={setNameCharacter}
-        />
-      ))}
+    <>
       <ModalConfirmation
         show={showModal}
         setShowModal={setShowModal}
@@ -32,7 +23,18 @@ const ListoOfCharacters = () => {
         title={title}
         description={description}
       />
-    </div>
+      <div className={styles.list}>
+        {characters.map((character, index) => (
+          <CardDetails
+            key={character.name}
+            character={character}
+            setShowModal={setShowModal}
+            index={index}
+            setName={setNameCharacter}
+          />
+        ))}
+      </div>
+    </>
   );
 };
 
