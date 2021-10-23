@@ -44,3 +44,8 @@
   align-items: center;
   justify-content: space-between;
 }
+@media (min-width: 800px) {
+  .container {
+    margin: 0 auto;
+  }
+}

@@ -12,9 +12,11 @@ const CardDetails = ({ character, index, setShowModal, setName }) => {
 
   return (
     <div className={styles.container}>
-      <button type="button" onClick={handleClickDelete}>
-        x
-      </button>
+      <div>
+        <button type="button" onClick={handleClickDelete}>
+          x
+        </button>
+      </div>
       <Link href={`/character/${index}`}>
         <div className={styles.details}>
           <div>

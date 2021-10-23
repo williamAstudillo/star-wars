@@ -3,10 +3,12 @@
   min-height: 30rem;
   margin: 0 auto;
   display: grid;
+  grid-auto-rows: 6rem;
   margin-top: 3rem;
 }
 @media (min-width: 800px) {
   .list {
+    width: 40%;
     grid-template-columns: repeat(2, auto);
   }
 }

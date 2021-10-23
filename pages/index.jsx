@@ -1,10 +1,10 @@
 import React from "react";
-import Container from "components/Container/Container";
+import ListOfCharacters from "components/ListOfCharacters/ListOfCharacters";
 
 const index = () => {
   return (
     <>
-      <Container />
+      <ListOfCharacters />
     </>
   );
 };

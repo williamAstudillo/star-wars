@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
-import CardDetails from "components/CardDetails/CardDetails";
-import styles from "components/ListOfCharacters/listOfCharacters.module.css";
-import ModalConfirmation from "components/ModalConfirmation/ModalConfirmation";
 import Appcontext from "context/AppContext";
+import Layout from "components/layout/Layout";
+import CardDetails from "components/CardDetails/CardDetails";
+import ModalConfirmation from "components/ModalConfirmation/ModalConfirmation";
+import styles from "components/ListOfCharacters/listOfCharacters.module.css";
 
 const ListoOfCharacters = () => {
   const [showModal, setShowModal] = useState(false);
@@ -23,17 +24,19 @@ const ListoOfCharacters = () => {
         title={title}
         description={description}
       />
-      <div className={styles.list}>
-        {characters.map((character, index) => (
-          <CardDetails
-            key={character.name}
-            character={character}
-            setShowModal={setShowModal}
-            index={index}
-            setName={setNameCharacter}
-          />
-        ))}
-      </div>
+      <Layout>
+        <div className={styles.list}>
+          {characters.map((character, index) => (
+            <CardDetails
+              key={character.name}
+              character={character}
+              setShowModal={setShowModal}
+              index={index}
+              setName={setNameCharacter}
+            />
+          ))}
+        </div>
+      </Layout>
     </>
   );
 };
