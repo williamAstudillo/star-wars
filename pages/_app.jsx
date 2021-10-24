@@ -1,5 +1,5 @@
 import React from "react";
-import Store from "Store/Store";
+import Store from "store/Store";
 import Header from "components/Header/Header";
 import "style.css";
 
