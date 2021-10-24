@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import Appcontext from "context/AppContext";
-import Layout from "components/layout/Layout";
+import Layout from "components/Layout/Layout";
 import CardDetails from "components/CardDetails/CardDetails";
 import ModalConfirmation from "components/ModalConfirmation/ModalConfirmation";
 import styles from "components/ListOfCharacters/listOfcharacters.module.css";

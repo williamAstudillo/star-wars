@@ -63,6 +63,7 @@ const useInitialState = () => {
         previous,
         currentUrl:url
       });
+      setLocalStorageData("charactersData",url,localStorageData[url])
     }
   };
 
