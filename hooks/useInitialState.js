@@ -28,13 +28,13 @@ const useInitialState = () => {
         });
       setLocalStorageData("charactersData",URL,response.data) 
     }else{
-       const {results,next,previous} =localStorageData[URL];
+       const {results,next,previous} =localStorageData[localStorageData.currentUrl];
         setState({
           ...state,
           characters:results,
           next, 
           previous,
-          currentUrl:URL
+          currentUrl:localStorageData.currentUrl
         });
     }
   }, []);
