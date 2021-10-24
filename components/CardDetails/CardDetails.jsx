@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "next/Link";
+import Link from "next/link";
 import styles from "components/CardDetails/cardDetails.module.css";
 
 const CardDetails = ({ character, setShowModal, setName, index }) => {
