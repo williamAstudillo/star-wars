@@ -3,7 +3,7 @@ import Appcontext from "context/AppContext";
 import Layout from "components/layout/Layout";
 import CardDetails from "components/CardDetails/CardDetails";
 import ModalConfirmation from "components/ModalConfirmation/ModalConfirmation";
-import styles from "components/ListOfCharacters/listOfCharacters.module.css";
+import styles from "components/ListOfCharacters/listOfcharacters.module.css";
 
 const ListoOfCharacters = () => {
   const [showModal, setShowModal] = useState(false);
