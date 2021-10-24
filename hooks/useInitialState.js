@@ -14,11 +14,11 @@ const useInitialState = () => {
   
   const URL = "https://swapi.dev/api/people/?page=1";
  
-  useEffect(() => { 
+  useEffect(async () => { 
     const localStorageData = getLocalStorageData("charactersData")
     if(!localStorageData){
-      axios.get(URL).then(({data}) => {
-        const {results,next,previous} =data;
+      const response = await axios.get(URL);
+      const { results,next,previous } = response.data;
         setState({
           ...state,
           characters:results,
@@ -26,8 +26,7 @@ const useInitialState = () => {
           previous,
           currentUrl:URL
         });
-        setLocalStorageData("charactersData",URL,data)
-      });
+      setLocalStorageData("charactersData",URL,response.data) 
     }else{
        const {results,next,previous} =localStorageData[URL];
         setState({
@@ -67,11 +66,13 @@ const useInitialState = () => {
     }
   };
 
-  const deleteCharacter =(name, url)=>{
+  const deleteCharacter =(name)=>{
+    const {currentUrl,isFavoriteShow} =state
     const localStorageData =getLocalStorageData("charactersData");
-    const newCharacterList =localStorageData[url].results.filter(character=>character.name !== name) 
-    localStorageData[url].results = newCharacterList
-    if(state.isFavoriteShow){
+    const newCharacterList =localStorageData[currentUrl].results.filter(character=>character.name !== name) 
+    localStorageData[currentUrl].results = newCharacterList
+
+    if(isFavoriteShow){
       const characterListFilter =newCharacterList.filter(character=>character.isFavorite === true)
       setState({
         ...state,
@@ -83,35 +84,36 @@ const useInitialState = () => {
         characters:newCharacterList,
       });
     }
-    setLocalStorageData("charactersData",url,localStorageData[url])
+    setLocalStorageData("charactersData",currentUrl,localStorageData[currentUrl])
   }
 
-  const addOrRemoveFavorite=(index,url)=>{
-    const {characters} =state
+  const addOrRemoveFavorite=(index)=>{
+    const {characters,currentUrl} =state
     characters[index].isFavorite=!characters[index].isFavorite
     const localStorageData =getLocalStorageData("charactersData");
-    localStorageData[url].results = characters
+    localStorageData[currentUrl].results = characters
     setState({
       ...state,
       characters,
     });
-    setLocalStorageData("charactersData",url,localStorageData[url])
+    setLocalStorageData("charactersData",currentUrl,localStorageData[currentUrl])
   }
 
-  const showFavorite=(url)=> {
+  const showFavorite=()=> {
+    const {currentUrl} = state
     const localStorageData =getLocalStorageData("charactersData");
     const {isFavoriteShow} =state
     let newCharacterList=null
 
     if(!isFavoriteShow){
-      newCharacterList =localStorageData[url].results.filter(character=>character.isFavorite === true)
+      newCharacterList =localStorageData[currentUrl].results.filter(character=>character.isFavorite === true)
       setState({
         ...state,
         isFavoriteShow:true,
         characters:newCharacterList,
       })
     }else{
-      newCharacterList =localStorageData[url].results
+      newCharacterList =localStorageData[currentUrl].results
       setState({
         ...state,
         isFavoriteShow:false,
@@ -120,12 +122,13 @@ const useInitialState = () => {
     }
   }
   const modifyCharacter=(index,characterNewInfo)=>{
+    const {currentUrl}= state
     const localStorageData =getLocalStorageData("charactersData");
-    localStorageData[state.currentUrl].results[index]=characterNewInfo
-    setLocalStorageData("charactersData",state.currentUrl,localStorageData[state.currentUrl])
+    localStorageData[currentUrl].results[index]=characterNewInfo
+    setLocalStorageData("charactersData",currentUrl,localStorageData[currentUrl])
     setState({
       ...state,
-      characters:localStorageData[state.currentUrl].results,
+      characters:localStorageData[currentUrl].results,
     });
   }
 

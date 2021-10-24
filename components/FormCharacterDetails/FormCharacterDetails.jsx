@@ -5,12 +5,14 @@ import { useForm } from "react-hook-form";
 import ModalConfirmation from "components/ModalConfirmation/ModalConfirmation";
 import { useRouter } from "next/router";
 
-const FormCharacterDetails = ({ index, showModal, setShowModal }) => {
-  const { state, addOrRemoveFavorite, modifyCharacter } =
-    useContext(Appcontext);
-  const { characters, currentUrl } = state;
-
+const FormCharacterDetails = ({
+  index,
+  showModal,
+  setShowModal,
+  characters,
+}) => {
   const [character] = useState(characters[index]);
+  const { addOrRemoveFavorite, modifyCharacter } = useContext(Appcontext);
 
   const { register, handleSubmit, setValue } = useForm();
   const router = useRouter();
@@ -41,7 +43,7 @@ const FormCharacterDetails = ({ index, showModal, setShowModal }) => {
       ...character,
       name: data.name,
       gender: data.gender,
-      birth_year: data.birth_year,
+      birth_year: data.birthYear,
       films: new Array(parseInt(data.films, 10)),
       height: data.height,
       mass: data.mass,
@@ -65,7 +67,7 @@ const FormCharacterDetails = ({ index, showModal, setShowModal }) => {
             <button
               type="button"
               className={styles.icon_button}
-              onClick={() => addOrRemoveFavorite(index, currentUrl)}
+              onClick={() => addOrRemoveFavorite(index)}
             >
               {isFavorite ? (
                 <i className="fas fa-star fa-2x" />

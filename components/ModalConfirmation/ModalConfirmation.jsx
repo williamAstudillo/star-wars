@@ -9,11 +9,10 @@ const ModalConfirmation = ({
   title,
   setShowModal,
   deleteCharacter,
-  url,
   name,
 }) => {
-  const handleClickDelete = (nameCaracter, currentUrl) => {
-    deleteCharacter(nameCaracter, currentUrl);
+  const handleClickDelete = (nameCaracter) => {
+    deleteCharacter(nameCaracter);
     setShowModal(false);
   };
   return (
@@ -34,7 +33,7 @@ const ModalConfirmation = ({
           <button
             type="button"
             className={styles.button_right}
-            onClick={() => handleClickDelete(name, url)}
+            onClick={() => handleClickDelete(name)}
           >
             borrar
           </button>

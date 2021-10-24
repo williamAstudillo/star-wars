@@ -4,7 +4,7 @@ import styles from "components/Layout/layout.module.css";
 
 const Layout = ({ children }) => {
   const { state, pagination, showFavorite } = useContext(Appcontext);
-  const { next, previous, currentUrl, isFavoriteShow } = state;
+  const { next, previous, isFavoriteShow } = state;
 
   return (
     <div className={styles.container}>
@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
               : styles.button_favorite
           }
           type="button"
-          onClick={() => showFavorite(currentUrl)}
+          onClick={() => showFavorite()}
         >
           Filtrar por favoritos
         </button>

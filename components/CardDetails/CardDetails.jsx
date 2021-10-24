@@ -2,12 +2,12 @@ import React from "react";
 import Link from "next/Link";
 import styles from "components/CardDetails/cardDetails.module.css";
 
-const CardDetails = ({ character, index, setShowModal, setName }) => {
+const CardDetails = ({ character, setShowModal, setName, index }) => {
   const { name, gender, isFavorite, birth_year: birthYear } = character;
 
   const handleClickDelete = () => {
     setShowModal(true);
-    setName(character.name);
+    setName(name);
   };
 
   return (

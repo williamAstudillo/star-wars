@@ -1,11 +1,16 @@
-import React, { useContext, useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Appcontext from "context/AppContext";
 import styles from "components/CharacterDetail/characterDetail.module.css";
 
-const CharacterDetail = ({ setShowForm, index }) => {
-  const { state, addOrRemoveFavorite } = useContext(Appcontext);
-  const { characters, currentUrl } = state;
-  const [character] = useState(characters[index]);
+const CharacterDetail = ({ characters, setShowForm, index }) => {
+  const [character, setCharacter] = useState(() => characters[index]);
+  const { addOrRemoveFavorite } = useContext(Appcontext);
+
+  useEffect(() => {
+    setCharacter(characters[index]);
+  }, [index]);
+
+  if (!character) return <p>Loading...</p>;
 
   const {
     name,
@@ -16,7 +21,6 @@ const CharacterDetail = ({ setShowForm, index }) => {
     mass,
     isFavorite = false,
   } = character;
-
   return (
     <div className={styles.container}>
       <div>
@@ -25,7 +29,7 @@ const CharacterDetail = ({ setShowForm, index }) => {
           <button
             type="button"
             className={styles.icon_button}
-            onClick={() => addOrRemoveFavorite(index, currentUrl)}
+            onClick={() => addOrRemoveFavorite(index)}
           >
             {isFavorite ? (
               <i className="fas fa-star fa-2x" />
